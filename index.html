@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Template Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="info-collector" id="height-width">
+        <h2>Set width and height</h2>
+        <p>The most used dimenssion is 1200 x 628.</p>
+
+        <div class="set-info">
+            <div class="height-width-inputs">
+                <input class="input" autocomplete="false" type="number" autocomplete="false" placeholder="Enter width"
+                    id="width-input">
+                <input class="input" type="number" placeholder="Enter height" id="height-input">
+            </div>
+            <div class="height-width-next">
+                <button class="next-btn" id="height-width-next-btn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-collector" id="blog-title">
+        <h2>Add Blog Title, Font and Text Color</h2>
+        <p>Write something attractive, will ya? <br> Add color in hex value (eg. #000000 is black).</p>
+
+        <div class="set-info">
+            <div class="title-input">
+                <input autocomplete="false" class="input" type="text" placeholder="Enter blog title" id="title-input">
+
+                <select name="font" id="font-selector" aria-placeholder="Choose Font">
+                    <option value="" disabled selected>Select your font</option>
+                    <option value="Poppins">Poppins</option>
+                    <option value="Ubuntu">Ubutntu</option>
+                    <option value="Raleway">Raleway</option>
+                    <option value="Philosopher">Philosopher</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Roboto">Roboto</option>
+                    <option value="Source Code Pro">Source Code Pro</option>
+                    <option value="Cario">Cario</option>
+                    <option value="Pacifico">Pacifico</option>
+                    <option value="Water Brush">Water Brush</option>
+                    <option value="Shadows Into Light">Shadows Into Light</option>
+                    <option value="Indie Flower">Indie Flower</option>
+                    <option value="Permanent Marker">Permanent Marker</option>
+                    <option value="Patrick Hand">Patrick Hand</option>
+                    <option value="Righteous">Righteous</option>
+                    <option value="Cinzel">Cinzel</option>
+                    <option value="Bangers">Bangers</option>
+                </select>
+
+                <input type="text" id="font-color-input" class="input" placeholder="Font Color Hex code">
+            </div>
+            <div class="title-next">
+                <button class="back-btn" id="title-back-btn">Back</button>
+                <button class="next-btn" id="title-next-btn">Make Thumbnail</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-collector" id="bg">
+        <h2>Set your background</h2>
+        <p>Set a background colour (in hex code). <br> Or choose a theme and we will do it accordingly</p>
+
+        <div class="set-info">
+            <div class="bg-inputs">
+                <input class="input" autocomplete="false" type="text" placeholder="Enter color hex code" id="bg-input">
+
+                <select name="" id="bg-select">
+                    <option value="" disabled selected>Select theme</option>
+                    <option value="motivational">Motivational</option>
+                    <option value="tech">Tech</option>
+                    <option value="story">Story</option>
+                    <option value="buisness">Buisness</option>
+                </select>
+            </div>
+
+            <div class="bg-next">
+                <button class="back-btn" id="bg-back-btn">Back</button>
+                <button class="next-btn" id="bg-next-btn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="canvas-div" id="canvas-div">
+        <canvas id="canvas"></canvas>
+        <button class="back-btn" id="canvas-back-btn">Back</button>
+        <button class="download-btn" id="download-btn">Download</button>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>

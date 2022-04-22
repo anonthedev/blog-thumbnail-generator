@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Cairo:wght@300;500;700;900&family=Cinzel:wght@500;700;900&family=Indie+Flower&family=Montserrat:wght@100;200;300;400;500;600;700;800&family=Pacifico&family=Patrick+Hand&family=Permanent+Marker&family=Philosopher:wght@400;700&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800&family=Righteous&family=Roboto:wght@100;300;400;500;700;900&family=Shadows+Into+Light&family=Source+Code+Pro:wght@300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&family=Water+Brush&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: gray;
+}
+
+.info-collector {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-family: "Poppins", sans-serif;
+}
+
+p {
+  text-align: center;
+  line-height: 1.5;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 15px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.set-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  border: none;
+  border-radius: 5px;
+  padding: 9px;
+}
+
+select:focus {
+  outline: none;
+}
+
+option[value="Poppins"] {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+option[value="Ubuntu"] {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+}
+
+option[value="Raleway"] {
+  font-weight: 700;
+  font-family: "Raleway", sans-serif;
+}
+
+option[value="Roboto"] {
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+}
+
+option[value="Cario"] {
+  font-weight: 700;
+  font-family: "Cario", sans-serif;
+}
+
+option[value="Montserrat"] {
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+}
+
+option[value="Philosopher"] {
+  font-weight: 700;
+  font-family: "Philosopher", sans-serif;
+}
+
+option[value="Source Code Pro"] {
+  font-weight: 700;
+  font-family: "Source Code Pro", sans-serif;
+}
+
+option[value="Pacifico"] {
+  font-weight: 700;
+  font-family: "Pacifico", sans-serif;
+}
+
+option[value="Water Brush"] {
+  font-weight: 700;
+  font-family: "Water Brush", sans-serif;
+}
+
+option[value="Shadows Into Light"] {
+  font-weight: 700;
+  font-family: "Shadows Into Light", sans-serif;
+}
+
+option[value="Indie Flower"] {
+  font-weight: 700;
+  font-family: "Indie Flower", sans-serif;
+}
+
+option[value="Permanent Marker"] {
+  font-weight: 700;
+  font-family: "Permanent Marker", sans-serif;
+}
+
+option[value="Patrick Hand"] {
+  font-weight: 700;
+  font-family: "Patrick Hand", sans-serif;
+}
+
+option[value="Righteous"] {
+  font-weight: 700;
+  font-family: "Righteous", sans-serif;
+}
+
+option[value="Cinzel"] {
+  font-weight: 700;
+  font-family: "Cinzel", sans-serif;
+}
+
+option[value="Bangers"] {
+  font-weight: 700;
+  font-family: "Bangers", sans-serif;
+}
+
+.next-btn,
+.download-btn {
+  overflow: hidden;
+  font-family: "Ubuntu", sans-serif;
+  padding: 8px 16px;
+  margin-top: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.back-btn {
+  overflow: hidden;
+  font-family: "Ubuntu", sans-serif;
+  padding: 7px 15px;
+  margin-top: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  color: white;
+  border: 2px solid white;
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.canvas-div {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+#canvas {
+  background-color: white;
+  font-family: "Poppins", sans-serif;
+}
