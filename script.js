@@ -72,7 +72,7 @@ function make() {
     ctx.fillStyle = `${fontColor}`;
     ctx.fillText(`${blogTitle}`, canvas.width / 2, canvas.height / 2);
 
-    if (titleInput.value != "") {
+    if (titleInput.value !== "" && fontColorInput.value != "" && fontSelector.value !=="") {
       heightWidthEl.style.display = "none";
       blogTitleEl.style.display = "none";
       canvasDiv.style.display = "flex";
