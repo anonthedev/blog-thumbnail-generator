@@ -46,15 +46,13 @@ function make() {
   bgNextBtn.addEventListener("click", () => {
     if (bgInput.value === "") {
       bgTheme = bgSelector.value;
-      console.log(bgTheme);
+     
       let img = new Image();
       img.src = `./images/${bgTheme}.jpg`;
 
       img.onload = function(){
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       }
-
-      console.log(img.src)
     } else {
       let bgColor = bgInput.value;
       ctx.fillStyle = `${bgColor}`;
