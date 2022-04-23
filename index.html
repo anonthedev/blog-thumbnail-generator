@@ -16,10 +16,8 @@
 
         <div class="set-info">
             <div class="height-width-inputs">
-                <input class="input" type="number" autocomplete="off" placeholder="Enter width"
-                    id="width-input">
-                <input class="input" type="number" 
-                autocomplete="off" placeholder="Enter height" id="height-input">
+                <input class="input" type="number" autocomplete="off" placeholder="Enter width" id="width-input">
+                <input class="input" type="number" autocomplete="off" placeholder="Enter height" id="height-input">
             </div>
             <div class="height-width-next">
                 <button class="next-btn" id="height-width-next-btn">Next</button>
@@ -56,7 +54,8 @@
                     <option value="Bangers">Bangers</option>
                 </select>
 
-                <input autocomplete="off" type="text" id="font-color-input" class="input" placeholder="Font Color Hex code">
+                <input autocomplete="off" type="text" id="font-color-input" class="input"
+                    placeholder="Font Color Hex code">
             </div>
             <div class="title-next">
                 <button class="back-btn" id="title-back-btn">Back</button>
@@ -88,6 +87,19 @@
             </div>
         </div>
     </div>
+<!-- 
+    <div class="bg-display" id="bg-display">
+        <h2>Choose a background</h2>
+
+        <div class="bg-display-imgs" id="bg-display-imgs">
+
+        </div>
+
+        <div class="bg-display-btns">
+            <button class="back-btn" id="bg-display-back-btn">Back</button>
+            <button class="next-btn" id="bg-display-next-btn">Next</button>
+        </div>
+    </div> -->
 
     <div class="canvas-div" id="canvas-div">
         <canvas id="canvas"></canvas>
@@ -95,6 +107,6 @@
         <button class="download-btn" id="download-btn">Download</button>
     </div>
 </body>
-<script src="script.js"></script>
+<script type="module" src="script.mjs"></script>
 
 </html>

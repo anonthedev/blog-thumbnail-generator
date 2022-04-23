@@ -142,6 +142,31 @@ option[value="Bangers"] {
   font-family: "Bangers", sans-serif;
 }
 
+.bg-display{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-display-imgs{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bg-display-imgs img{
+  border-radius: 15px;
+  width: 300px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all linear 0.3s;
+}
+
+.bg-display-imgs img:hover{
+  transform: scale(1.05);
+}
+
 .next-btn,
 .download-btn {
   overflow: hidden;

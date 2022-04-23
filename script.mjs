@@ -19,16 +19,29 @@ const bgSelector = document.getElementById("bg-select");
 const bgNextBtn = document.getElementById("bg-next-btn");
 const bgBackBtn = document.getElementById("bg-back-btn");
 
+const bgDisplayEl = document.getElementById("bg-display");
+const bgDisplayNextBtn = document.getElementById("bg-display-next-btn");
+const bgDisplayBackBtn = document.getElementById("bg-display-back-btn");
+const bgDisplayImgs = document.getElementById("bg-display-imgs");
+// const bgDisplayImg = document.querySelector("#img1");
+
 const canvasBack = document.getElementById("canvas-back-btn");
 const downloadBtn = document.getElementById("download-btn");
 
+import motivational from "./motivational.mjs";
+import tech from "./tech.mjs";
+import story from "./story.mjs";
+import buisness from "./buisness.mjs";
+
 let canvasHeight;
 let canvasWidth;
+let bgTheme;
 
 function make() {
   canvasDiv.style.display = "none";
   blogTitleEl.style.display = "none";
   bgEl.style.display = "none";
+  // bgDisplayEl.style.display = "none";
 
   heightWidthNext.addEventListener("click", () => {
     canvasHeight = heightInput.value;
@@ -46,13 +59,59 @@ function make() {
   bgNextBtn.addEventListener("click", () => {
     if (bgInput.value === "") {
       bgTheme = bgSelector.value;
-     
-      let img = new Image();
-      img.src = `./images/${bgTheme}.jpg`;
 
-      img.onload = function(){
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      let imgURL = bgTheme[Math.floor(Math.random() * bgTheme.length)];
+
+      console.log(imgURL);
+
+      if (bgTheme === "motivational") {
+        let imgURL =
+          motivational[Math.floor(Math.random() * motivational.length)];
+        let img = new Image();
+        img.src = `${imgURL}`;
+        img.onload = function () {
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+      } else if (bgTheme === "tech") {
+        let imgURL = tech[Math.floor(Math.random() * tech.length)];
+        let img = new Image();
+        img.src = `${imgURL}`;
+        img.onload = function () {
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+      } else if (bgTheme === "story") {
+        let imgURL = story[Math.floor(Math.random() * story.length)];
+        let img = new Image();
+        img.src = `${imgURL}`;
+        img.onload = function () {
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+      } else if (bgTheme === "buisness") {
+        let imgURL = buisness[Math.floor(Math.random() * buisness.length)];
+        let img = new Image();
+        img.src = `${imgURL}`;
+        img.onload = function () {
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
       }
+
+      // function createImageNode(fileName) {
+      //   const img = new Image();
+      //   img.src = fileName;
+      //   img.id = 'desiredId'
+      //   return img;
+      // }
+
+      // if (bgTheme === "motivational") {
+      //   motivational.forEach((imgURL) => {
+      //     bgDisplayImgs.appendChild(createImageNode(imgURL));
+      //   });
+
+      //   console.log(bgDisplayImg)
+      //     // bgDisplayImg.addEventListener("click", (index) => {
+      //     //   console.log(index);
+      //     // });
+      // }
     } else {
       let bgColor = bgInput.value;
       ctx.fillStyle = `${bgColor}`;
@@ -61,6 +120,7 @@ function make() {
 
     bgEl.style.display = "none";
     blogTitleEl.style.display = "flex";
+    // bgDisplayEl.style.display = "flex";
   });
 
   titleNext.addEventListener("click", () => {
@@ -72,7 +132,11 @@ function make() {
     ctx.fillStyle = `${fontColor}`;
     ctx.fillText(`${blogTitle}`, canvas.width / 2, canvas.height / 2);
 
-    if (titleInput.value !== "" && fontColorInput.value != "" && fontSelector.value !=="") {
+    if (
+      titleInput.value !== "" &&
+      fontColorInput.value != "" &&
+      fontSelector.value !== ""
+    ) {
       heightWidthEl.style.display = "none";
       blogTitleEl.style.display = "none";
       canvasDiv.style.display = "flex";
@@ -82,10 +146,12 @@ function make() {
   titleBack.addEventListener("click", () => {
     bgEl.style.display = "flex";
     blogTitleEl.style.display = "none";
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   });
 
   canvasBack.addEventListener("click", () => {
     blogTitleEl.style.display = "flex";
+    bgEl.style.display = "flex";
     canvasDiv.style.display = "none";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   });
@@ -93,6 +159,7 @@ function make() {
   bgBackBtn.addEventListener("click", () => {
     heightWidthEl.style.display = "flex";
     bgEl.style.display = "none";
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   });
 
   downloadBtn.addEventListener("click", () => {
