@@ -142,6 +142,20 @@ option[value="Bangers"] {
   font-family: "Bangers", sans-serif;
 }
 
+.bg-img-preview{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-img-preview img{
+  border-radius: 15px;
+  width: 300px;
+  margin: 20px;
+  cursor: pointer;
+}
+
 .bg-display{
   overflow: hidden;
   display: flex;
@@ -159,7 +173,7 @@ option[value="Bangers"] {
 .bg-display-imgs img{
   border-radius: 15px;
   width: 300px;
-  padding: 20px;
+  margin: 20px;
   cursor: pointer;
   transition: all linear 0.3s;
 }
@@ -167,6 +181,7 @@ option[value="Bangers"] {
 .bg-display-imgs img:hover{
   overflow: hidden;
   transform: scale(1.05);
+  border-radius: 7px;
 }
 
 .next-btn,
