@@ -71,6 +71,7 @@ bgNextBtn.addEventListener("click", () => {
 
       let canvasImg = new Image();
       canvasImg.src = `${imgURL}`;
+      canvasImg.crossOrigin = "anonymous"
       canvasImg.onload = function () {
         ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
       };
@@ -82,6 +83,7 @@ bgNextBtn.addEventListener("click", () => {
 
       let canvasImg = new Image();
       canvasImg.src = `${imgURL}`;
+      canvasImg.crossOrigin = "anonymous"
       canvasImg.onload = function () {
         ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
       };
@@ -93,6 +95,7 @@ bgNextBtn.addEventListener("click", () => {
 
       let canvasImg = new Image();
       canvasImg.src = `${imgURL}`;
+      canvasImg.crossOrigin = "anonymous"
       canvasImg.onload = function () {
         ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
       };
@@ -104,6 +107,7 @@ bgNextBtn.addEventListener("click", () => {
 
       let canvasImg = new Image();
       canvasImg.src = `${imgURL}`;
+      canvasImg.crossOrigin = "anonymous"
       canvasImg.onload = function () {
         ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
       };
@@ -115,6 +119,7 @@ bgNextBtn.addEventListener("click", () => {
 
       let canvasImg = new Image();
       canvasImg.src = `${imgURL}`;
+      canvasImg.crossOrigin = "anonymous"
       canvasImg.onload = function () {
         ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
       };
@@ -126,6 +131,7 @@ bgNextBtn.addEventListener("click", () => {
 
       let canvasImg = new Image();
       canvasImg.src = `${imgURL}`;
+      canvasImg.crossOrigin = "anonymous"
       canvasImg.onload = function () {
         ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
       };
@@ -232,7 +238,7 @@ bgBackBtn.addEventListener("click", () => {
 });
 
 downloadBtn.addEventListener("click", () => {
-  image = canvas
+  let image = canvas
     .toDataURL("image/png")
     .replace("image/png", "image/octet-stream");
   var link = document.createElement("a");
