@@ -1,6 +1,9 @@
 const canvas = document.getElementById("canvas");
 const canvasDiv = document.getElementById("canvas-div");
 const ctx = canvas.getContext("2d");
+
+const fillAllFields = document.getElementById("fill-all-prompt");
+
 const heightWidthEl = document.getElementById("height-width");
 const heightInput = document.getElementById("height-input");
 const widthInput = document.getElementById("width-input");
@@ -22,7 +25,6 @@ const bgBackBtn = document.getElementById("bg-back-btn");
 const bgImgPreview = document.getElementById("bg-img-preview-img");
 
 const bgDisplayEl = document.getElementById("bg-display");
-const bgDisplayNextBtn = document.getElementById("bg-display-next-btn");
 const bgDisplayBackBtn = document.getElementById("bg-display-back-btn");
 const bgDisplayImgs = document.getElementById("bg-display-imgs");
 
@@ -55,67 +57,74 @@ heightWidthNext.addEventListener("click", () => {
   if (heightInput.value != "" && widthInput.value != "") {
     heightWidthEl.style.display = "none";
     bgEl.style.display = "flex";
+    fillAllFields.style.display = "none";
+  } else {
+    fillAllFields.style.display = "block";
   }
 });
 
 bgNextBtn.addEventListener("click", () => {
-  function createImageNode(imgUrl, id) {
-    const canvasImg = new Image();
-    canvasImg.src = imgUrl;
-    canvasImg.id = id;
-    canvasImg.className = "bgDisplayImg";
-    canvasImg.crossOrigin = "anonymous";
+  if (bgInput.value !== "" || bgSelector.value !== "") {
+    function createImageNode(imgUrl, id) {
+      const canvasImg = new Image();
+      canvasImg.src = imgUrl;
+      canvasImg.id = id;
+      canvasImg.className = "bgDisplayImg";
+      canvasImg.crossOrigin = "anonymous";
 
-    canvasImg.addEventListener("click", () => {
-      console.log(canvasImg.src);
-      let previewImg = new Image();
-      previewImg.src = canvasImg.src;
-      previewImg.crossOrigin = "anonymous";
-      bgImgPreview.appendChild(previewImg);
-      bgDisplayEl.style.display = "none";
-      blogTitleEl.style.display = "flex";
-      previewImg.onload = function () {
-        ctx.drawImage(previewImg, 0, 0, canvas.width, canvas.height);
-      };
-    });
-    return canvasImg;
-  }
-
-  if (bgInput.value === "") {
-    bgTheme = bgSelector.value;
-    if (bgTheme === "motivational") {
-      motivational.forEach((imgURL, index) => {
-        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+      canvasImg.addEventListener("click", () => {
+        console.log(canvasImg.src);
+        let previewImg = new Image();
+        previewImg.src = canvasImg.src;
+        previewImg.crossOrigin = "anonymous";
+        bgImgPreview.appendChild(previewImg);
+        bgDisplayEl.style.display = "none";
+        blogTitleEl.style.display = "flex";
+        previewImg.onload = function () {
+          ctx.drawImage(previewImg, 0, 0, canvas.width, canvas.height);
+        };
       });
-    } else if (bgTheme === "tech") {
-      tech.forEach((imgURL, index) => {
-        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
-      });
-    } else if (bgTheme === "story") {
-      story.forEach((imgURL, index) => {
-        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
-      });
-    } else if (bgTheme === "buisness") {
-      buisness.forEach((imgURL, index) => {
-        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
-      });
-    }else if (bgTheme === "gym-motivation") {
-      gymMotivation.forEach((imgURL, index) => {
-        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
-      });
-    }else if (bgTheme === "self-help") {
-      slefHelp.forEach((imgURL, index) => {
-        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
-      });
+      return canvasImg;
     }
+
+    if (bgInput.value === "") {
+      bgTheme = bgSelector.value;
+      if (bgTheme === "motivational") {
+        motivational.forEach((imgURL, index) => {
+          bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+        });
+      } else if (bgTheme === "tech") {
+        tech.forEach((imgURL, index) => {
+          bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+        });
+      } else if (bgTheme === "story") {
+        story.forEach((imgURL, index) => {
+          bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+        });
+      } else if (bgTheme === "buisness") {
+        buisness.forEach((imgURL, index) => {
+          bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+        });
+      } else if (bgTheme === "gym-motivation") {
+        gymMotivation.forEach((imgURL, index) => {
+          bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+        });
+      } else if (bgTheme === "self-help") {
+        slefHelp.forEach((imgURL, index) => {
+          bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+        });
+      }
+    } else {
+      let bgColor = bgInput.value;
+      ctx.fillStyle = `${bgColor}`;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    bgEl.style.display = "none";
+    bgDisplayEl.style.display = "flex";
+    fillAllFields.style.display = "none";
   } else {
-    let bgColor = bgInput.value;
-    ctx.fillStyle = `${bgColor}`;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    fillAllFields.style.display = "block";
   }
-  bgEl.style.display = "none";
-  bgDisplayEl.style.display = "flex";
-  // blogTitleEl.style.display = "flex";
 });
 
 // if (bgTheme === "motivational") {

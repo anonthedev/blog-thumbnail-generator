@@ -9,6 +9,16 @@ body {
   background-color: gray;
 }
 
+.fill-all-prompt{
+  background-color: white;
+  width: fit-content;
+  padding: 8px;
+  border-radius: 8px;
+  margin: 10px;
+  float: right;
+  display: none;
+}
+
 .info-collector {
   width: 100vw;
   height: 100vh;
@@ -20,6 +30,7 @@ body {
 
 h2 {
   font-family: "Poppins", sans-serif;
+  text-align: center;
 }
 
 p {
@@ -149,6 +160,13 @@ option[value="Bangers"] {
   justify-content: center;
 }
 
+.bg-inputs{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .bg-img-preview img {
   border-radius: 15px;
   width: 300px;
@@ -223,4 +241,13 @@ option[value="Bangers"] {
 #canvas {
   background-color: white;
   font-family: "Poppins", sans-serif;
+}
+
+
+@media screen and (max-width: 375px) {
+  .height-width-inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
