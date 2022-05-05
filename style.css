@@ -142,21 +142,21 @@ option[value="Bangers"] {
   font-family: "Bangers", sans-serif;
 }
 
-.bg-img-preview{
+.bg-img-preview {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.bg-img-preview img{
+.bg-img-preview img {
   border-radius: 15px;
   width: 300px;
   margin: 20px;
   cursor: pointer;
 }
 
-.bg-display{
+.bg-display {
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -164,13 +164,13 @@ option[value="Bangers"] {
   align-items: center;
 }
 
-.bg-display-imgs{
+.bg-display-imgs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.bg-display-imgs img{
+.bg-display-imgs img {
   border-radius: 15px;
   width: 300px;
   margin: 20px;
@@ -178,7 +178,7 @@ option[value="Bangers"] {
   transition: all linear 0.3s;
 }
 
-.bg-display-imgs img:hover{
+.bg-display-imgs img:hover {
   overflow: hidden;
   transform: scale(1.05);
   border-radius: 7px;

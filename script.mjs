@@ -21,10 +21,10 @@ const bgBackBtn = document.getElementById("bg-back-btn");
 
 const bgImgPreview = document.getElementById("bg-img-preview-img");
 
-// const bgDisplayEl = document.getElementById("bg-display");
-// const bgDisplayNextBtn = document.getElementById("bg-display-next-btn");
-// const bgDisplayBackBtn = document.getElementById("bg-display-back-btn");
-// const bgDisplayImgs = document.getElementById("bg-display-imgs");
+const bgDisplayEl = document.getElementById("bg-display");
+const bgDisplayNextBtn = document.getElementById("bg-display-next-btn");
+const bgDisplayBackBtn = document.getElementById("bg-display-back-btn");
+const bgDisplayImgs = document.getElementById("bg-display-imgs");
 
 const canvasBack = document.getElementById("canvas-back-btn");
 const downloadBtn = document.getElementById("download-btn");
@@ -43,7 +43,7 @@ let bgTheme;
 canvasDiv.style.display = "none";
 blogTitleEl.style.display = "none";
 bgEl.style.display = "none";
-// bgDisplayEl.style.display = "none";
+bgDisplayEl.style.display = "none";
 
 heightWidthNext.addEventListener("click", () => {
   canvasHeight = heightInput.value;
@@ -59,137 +59,139 @@ heightWidthNext.addEventListener("click", () => {
 });
 
 bgNextBtn.addEventListener("click", () => {
+  function createImageNode(imgUrl, id) {
+    const canvasImg = new Image();
+    canvasImg.src = imgUrl;
+    canvasImg.id = id;
+    canvasImg.className = "bgDisplayImg";
+    canvasImg.crossOrigin = "anonymous";
+
+    canvasImg.addEventListener("click", () => {
+      console.log(canvasImg.src);
+      let previewImg = new Image();
+      previewImg.src = canvasImg.src;
+      previewImg.crossOrigin = "anonymous";
+      bgImgPreview.appendChild(previewImg);
+      bgDisplayEl.style.display = "none";
+      blogTitleEl.style.display = "flex";
+      previewImg.onload = function () {
+        ctx.drawImage(previewImg, 0, 0, canvas.width, canvas.height);
+      };
+    });
+    return canvasImg;
+  }
+
   if (bgInput.value === "") {
     bgTheme = bgSelector.value;
-
     if (bgTheme === "motivational") {
-      let imgURL =
-        motivational[Math.floor(Math.random() * motivational.length)];
-      let previewImg = new Image();
-      previewImg.src = `${imgURL}`;
-      bgImgPreview.appendChild(previewImg);
-
-      let canvasImg = new Image();
-      canvasImg.src = `${imgURL}`;
-      canvasImg.crossOrigin = "anonymous"
-      canvasImg.onload = function () {
-        ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
-      };
+      motivational.forEach((imgURL, index) => {
+        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+      });
     } else if (bgTheme === "tech") {
-      let imgURL = tech[Math.floor(Math.random() * tech.length)];
-      let previewImg = new Image();
-      previewImg.src = `${imgURL}`;
-      bgImgPreview.appendChild(previewImg);
-
-      let canvasImg = new Image();
-      canvasImg.src = `${imgURL}`;
-      canvasImg.crossOrigin = "anonymous"
-      canvasImg.onload = function () {
-        ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
-      };
+      tech.forEach((imgURL, index) => {
+        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+      });
     } else if (bgTheme === "story") {
-      let imgURL = story[Math.floor(Math.random() * story.length)];
-      let previewImg = new Image();
-      previewImg.src = `${imgURL}`;
-      bgImgPreview.appendChild(previewImg);
-
-      let canvasImg = new Image();
-      canvasImg.src = `${imgURL}`;
-      canvasImg.crossOrigin = "anonymous"
-      canvasImg.onload = function () {
-        ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
-      };
+      story.forEach((imgURL, index) => {
+        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+      });
     } else if (bgTheme === "buisness") {
-      let imgURL = buisness[Math.floor(Math.random() * buisness.length)];
-      let previewImg = new Image();
-      previewImg.src = `${imgURL}`;
-      bgImgPreview.appendChild(previewImg);
-
-      let canvasImg = new Image();
-      canvasImg.src = `${imgURL}`;
-      canvasImg.crossOrigin = "anonymous"
-      canvasImg.onload = function () {
-        ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
-      };
-    } else if (bgTheme === "gym-motivation") {
-      let imgURL = gymMotivation[Math.floor(Math.random() * gymMotivation.length)];
-      let previewImg = new Image();
-      previewImg.src = `${imgURL}`;
-      bgImgPreview.appendChild(previewImg);
-
-      let canvasImg = new Image();
-      canvasImg.src = `${imgURL}`;
-      canvasImg.crossOrigin = "anonymous"
-      canvasImg.onload = function () {
-        ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
-      };
-    } else if (bgTheme === "self-help") {
-      let imgURL = slefHelp[Math.floor(Math.random() * slefHelp.length)];
-      let previewImg = new Image();
-      previewImg.src = `${imgURL}`;
-      bgImgPreview.appendChild(previewImg);
-
-      let canvasImg = new Image();
-      canvasImg.src = `${imgURL}`;
-      canvasImg.crossOrigin = "anonymous"
-      canvasImg.onload = function () {
-        ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
-      };
+      buisness.forEach((imgURL, index) => {
+        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+      });
+    }else if (bgTheme === "gym-motivation") {
+      gymMotivation.forEach((imgURL, index) => {
+        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+      });
+    }else if (bgTheme === "self-help") {
+      slefHelp.forEach((imgURL, index) => {
+        bgDisplayImgs.appendChild(createImageNode(imgURL, index));
+      });
     }
-
-    // function createImageNode(fileName, id) {
-    //   const img = new Image();
-    //   img.src = fileName;
-    //   img.id = id;
-    //   return img;
-    // }
-    // motivational.forEach((imgURL, index) => {
-    //   bgDisplayImgs.appendChild(createImageNode(imgURL, index));
-
-    //   // bgDisplayImgs.innerHTML = `<img id=${index} src=${imgURL} onClick=${newF}>`
-    // }else if (bgTheme === "tech") {
-    //   tech.forEach((imgURL, index) => {
-    //     bgDisplayImgs.appendChild(createImageNode(imgURL, index));
-    //   });
-    // } else if (bgTheme === "story") {
-    //   story.forEach((imgURL, index) => {
-    //     bgDisplayImgs.appendChild(createImageNode(imgURL, index));
-    //   });
-    // } else if (bgTheme === "buisness") {
-    //   buisness.forEach((imgURL, index) => {
-    //     bgDisplayImgs.appendChild(createImageNode(imgURL, index));
-    //   });
-    // }
-    // fetch(`https://api.unsplash.com/search/collections?page=1&query=${bgTheme}&client_id=yJcnKwvXHxYgqfGkuRMLUY2Cf8jWe-T2FaIGmq-0-Ms`)
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data.results[0])
-    //     data.results.map(()=>{
-    //       // bgDisplayImgs.appendChild(createImageNode(cover_photo.urls.regular))
-    //     })
-    //     //
-    //   });
-
-    // console.log(bgDisplayImg)
-    // bgDisplayImg.addEventListener("click", (index) => {
-    //     console.log(index);
-    //   });
-
-    // let imgURL = bgTheme[Math.floor(Math.random() * bgTheme.length)];
-
-    // console.log(imgURL);
   } else {
     let bgColor = bgInput.value;
     ctx.fillStyle = `${bgColor}`;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
-
   bgEl.style.display = "none";
-  blogTitleEl.style.display = "flex";
-  // bgDisplayEl.style.display = "none";
+  bgDisplayEl.style.display = "flex";
+  // blogTitleEl.style.display = "flex";
 });
+
+// if (bgTheme === "motivational") {
+//   let imgURL =
+//     motivational[Math.floor(Math.random() * motivational.length)];
+//   let previewImg = new Image();
+//   previewImg.src = `${imgURL}`;
+//   bgImgPreview.appendChild(previewImg);
+
+//   let canvasImg = new Image();
+//   canvasImg.src = `${imgURL}`;
+//   canvasImg.crossOrigin = "anonymous"
+//   canvasImg.onload = function () {
+//     ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
+//   };
+// } else if (bgTheme === "tech") {
+//   let imgURL = tech[Math.floor(Math.random() * tech.length)];
+//   let previewImg = new Image();
+//   previewImg.src = `${imgURL}`;
+//   bgImgPreview.appendChild(previewImg);
+
+//   let canvasImg = new Image();
+//   canvasImg.src = `${imgURL}`;
+//   canvasImg.crossOrigin = "anonymous"
+//   canvasImg.onload = function () {
+//     ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
+//   };
+// } else if (bgTheme === "story") {
+//   let imgURL = story[Math.floor(Math.random() * story.length)];
+//   let previewImg = new Image();
+//   previewImg.src = `${imgURL}`;
+//   bgImgPreview.appendChild(previewImg);
+
+//   let canvasImg = new Image();
+//   canvasImg.src = `${imgURL}`;
+//   canvasImg.crossOrigin = "anonymous"
+//   canvasImg.onload = function () {
+//     ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
+//   };
+// } else if (bgTheme === "buisness") {
+//   let imgURL = buisness[Math.floor(Math.random() * buisness.length)];
+//   let previewImg = new Image();
+//   previewImg.src = `${imgURL}`;
+//   bgImgPreview.appendChild(previewImg);
+
+//   let canvasImg = new Image();
+//   canvasImg.src = `${imgURL}`;
+//   canvasImg.crossOrigin = "anonymous"
+//   canvasImg.onload = function () {
+//     ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
+//   };
+// } else if (bgTheme === "gym-motivation") {
+//   let imgURL = gymMotivation[Math.floor(Math.random() * gymMotivation.length)];
+//   let previewImg = new Image();
+//   previewImg.src = `${imgURL}`;
+//   bgImgPreview.appendChild(previewImg);
+
+//   let canvasImg = new Image();
+//   canvasImg.src = `${imgURL}`;
+//   canvasImg.crossOrigin = "anonymous"
+//   canvasImg.onload = function () {
+//     ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
+//   };
+// } else if (bgTheme === "self-help") {
+//   let imgURL = slefHelp[Math.floor(Math.random() * slefHelp.length)];
+//   let previewImg = new Image();
+//   previewImg.src = `${imgURL}`;
+//   bgImgPreview.appendChild(previewImg);
+
+//   let canvasImg = new Image();
+//   canvasImg.src = `${imgURL}`;
+//   canvasImg.crossOrigin = "anonymous"
+//   canvasImg.onload = function () {
+//     ctx.drawImage(canvasImg, 0, 0, canvas.width, canvas.height);
+//   };
+// }
 
 titleNext.addEventListener("click", () => {
   let blogTitle = titleInput.value;
@@ -215,8 +217,16 @@ titleNext.addEventListener("click", () => {
   }
 });
 
-titleBack.addEventListener("click", () => {
+bgDisplayBackBtn.addEventListener("click", () => {
+  bgDisplayEl.style.display = "none";
   bgEl.style.display = "flex";
+  while (bgDisplayImgs.firstChild) {
+    bgDisplayImgs.removeChild(bgDisplayImgs.firstChild);
+  }
+});
+
+titleBack.addEventListener("click", () => {
+  bgDisplayEl.style.display = "flex";
   blogTitleEl.style.display = "none";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   while (bgImgPreview.firstChild) {
@@ -225,10 +235,12 @@ titleBack.addEventListener("click", () => {
 });
 
 canvasBack.addEventListener("click", () => {
-  blogTitleEl.style.display = "flex";
   bgEl.style.display = "flex";
   canvasDiv.style.display = "none";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  while (bgDisplayImgs.firstChild) {
+    bgDisplayImgs.removeChild(bgDisplayImgs.firstChild);
+  }
 });
 
 bgBackBtn.addEventListener("click", () => {
