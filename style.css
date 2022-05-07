@@ -6,16 +6,33 @@
 }
 
 body {
-  background-color: gray;
+  background-image: url("/bg.jpg");
+  background-size: cover;
+  color: white;
 }
 
-.fill-all-prompt{
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  height: max-content;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
+}
+
+.fill-all-prompt {
+  position: absolute;
+  color: red;
   background-color: white;
+  font-weight: bold;
   width: fit-content;
-  padding: 8px;
+  padding: 5px;
+  right: 10px;
+  top: 10px;
   border-radius: 8px;
-  margin: 10px;
-  float: right;
   display: none;
 }
 
@@ -29,17 +46,22 @@ body {
 }
 
 h2 {
+  padding: 10px 0px;
   font-family: "Poppins", sans-serif;
   text-align: center;
+  font-size: 2.4rem;
 }
 
 p {
+  padding-bottom: 10px;
   text-align: center;
+  font-size: 1.2rem;
   line-height: 1.5;
   font-family: "Ubuntu", sans-serif;
 }
 
 .input {
+  font-size: 1rem;
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -160,7 +182,7 @@ option[value="Bangers"] {
   justify-content: center;
 }
 
-.bg-inputs{
+.bg-inputs {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -180,6 +202,7 @@ option[value="Bangers"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .bg-display-imgs {
@@ -243,9 +266,8 @@ option[value="Bangers"] {
   font-family: "Poppins", sans-serif;
 }
 
-
 @media screen and (max-width: 375px) {
-  .height-width-inputs{
+  .height-width-inputs {
     display: flex;
     flex-direction: column;
     align-items: center;

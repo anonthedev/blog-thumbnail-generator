@@ -8,6 +8,7 @@ const heightWidthEl = document.getElementById("height-width");
 const heightInput = document.getElementById("height-input");
 const widthInput = document.getElementById("width-input");
 const heightWidthNext = document.getElementById("height-width-next-btn");
+const heightWidthSkip = document.getElementById("height-width-skip-btn");
 
 const blogTitleEl = document.getElementById("blog-title");
 const titleInput = document.getElementById("title-input");
@@ -61,6 +62,15 @@ heightWidthNext.addEventListener("click", () => {
   } else {
     fillAllFields.style.display = "block";
   }
+});
+
+heightWidthSkip.addEventListener("click", () => {
+  canvas.width = 1200;
+  canvas.height = 630;
+
+  heightWidthEl.style.display = "none";
+  bgEl.style.display = "flex";
+  fillAllFields.style.display = "none";
 });
 
 bgNextBtn.addEventListener("click", () => {
@@ -219,10 +229,9 @@ titleNext.addEventListener("click", () => {
     heightWidthEl.style.display = "none";
     blogTitleEl.style.display = "none";
     canvasDiv.style.display = "flex";
-  }
-
-  while (bgImgPreview.firstChild) {
-    bgImgPreview.removeChild(bgImgPreview.firstChild);
+    fillAllFields.style.display = "none";
+  }else{
+    fillAllFields.style.display = "block";
   }
 });
 
@@ -249,6 +258,9 @@ canvasBack.addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   while (bgDisplayImgs.firstChild) {
     bgDisplayImgs.removeChild(bgDisplayImgs.firstChild);
+  }
+  while (bgImgPreview.firstChild) {
+    bgImgPreview.removeChild(bgImgPreview.firstChild);
   }
 });
 
