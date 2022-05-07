@@ -10,7 +10,7 @@
     <meta property="og:description" content="Generate your blog thumbnail">
     <meta property="og:image" content="<%= require('./preview-img.png') %>">
     <meta property="og:image:type" content="image/png">
-    <meta property = "og:image:width" content="300">
+    <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="300">
     <meta property="og:url" content="https://blog-thumbnail-generator.netlify.app">
     <title>Blog Thumbnail Generator</title>
@@ -21,14 +21,22 @@
     <div class="fill-all-prompt" id="fill-all-prompt">
         <p>Please fill all the fields to proceed.</p>
     </div>
+
     <div class="info-collector" id="height-width">
-        <h2>Set width and height</h2>
-        <p>The most used dimenssion is 1200 x 630.</p>
+
+        <div class="intro">
+            <h1>Blog Thumbnail Generator</h1>
+            <h3>Generate Awesome Thumbnails within seconds for FREE</h3>
+        </div>
+
+        <p>Set width and height</p>
         <p>If you don't know just click skip.</p>
         <div class="set-info">
             <div class="height-width-inputs">
-                <input class="input" type="number" autocomplete="off" placeholder="Enter width" id="width-input">
-                <input class="input" type="number" autocomplete="off" placeholder="Enter height" id="height-input">
+                <input class="input" type="number" autocomplete="off" placeholder="Width ( 1200 is ideal )"
+                    id="width-input">
+                <input class="input" type="number" autocomplete="off" placeholder="Height ( 630 is ideal )"
+                    id="height-input">
             </div>
             <div class="height-width-next">
                 <button class="back-btn skip" id="height-width-skip-btn">Skip</button>
@@ -40,7 +48,7 @@
     <div class="info-collector" id="blog-title">
 
         <div class="bg-img-preview" id="bg-img-preview">
-            <h2>This should be your thumbnail bg</h2>
+            <h2>Preview of your bg</h2>
             <div id="bg-img-preview-img"></div>
         </div>
         <h2>Add Blog Title, Font and Text Color</h2>
@@ -71,8 +79,10 @@
                     <option value="Bangers">Bangers</option>
                 </select>
 
-                <input autocomplete="off" type="text" id="font-color-input" class="input"
-                    placeholder="Font Color Hex code">
+                <div class="color-input-div" id="font-color-input-div">
+                    <label for="">Font Color: </label>
+                    <input autocomplete="off" type="color" id="font-color-input" class="color-input">
+                </div>
             </div>
             <div class="title-next">
                 <button class="back-btn" id="title-back-btn">Back</button>
@@ -83,14 +93,18 @@
 
     <div class="info-collector" id="bg">
         <h2>Set your background</h2>
-        <p>Set a background colour (in hex code). <br> Or choose a theme and we will do it accordingly</p>
+        <p>Choose a solid background color. <br> Or choose a theme and we will do it accordingly</p>
 
         <div class="set-info">
             <div class="bg-inputs">
-                <input class="input" autocomplete="off" type="text" placeholder="Enter color hex code" id="bg-input">
+
+                <div class="color-input-div">
+                    <label for="">Choose a color: </label>
+                    <input class="color-input" autocomplete="off" type="color" id="bg-input">
+                </div>
                 <p>OR</p>
                 <select name="" id="bg-select">
-                    <option value="" disabled selected>Select theme</option>
+                    <option value="" selected>Select theme</option>
                     <option value="motivational">Motivational</option>
                     <option value="gym-motivation">Gym Motivation</option>
                     <option value="self-help">Self Help</option>
@@ -125,6 +139,10 @@
         <button class="back-btn" id="canvas-back-btn">Back</button>
         <button class="download-btn" id="download-btn">Download</button>
     </div>
+
+    <footer class="footer">
+
+    </footer>
 </body>
 <script type="module" src="script.mjs"></script>
 

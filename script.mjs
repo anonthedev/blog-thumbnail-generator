@@ -75,29 +75,28 @@ heightWidthSkip.addEventListener("click", () => {
 
 bgNextBtn.addEventListener("click", () => {
   if (bgInput.value !== "" || bgSelector.value !== "") {
-    function createImageNode(imgUrl, id) {
-      const canvasImg = new Image();
-      canvasImg.src = imgUrl;
-      canvasImg.id = id;
-      canvasImg.className = "bgDisplayImg";
-      canvasImg.crossOrigin = "anonymous";
+    if (bgSelector.value !== "") {
+      function createImageNode(imgUrl, id) {
+        const canvasImg = new Image();
+        canvasImg.src = imgUrl;
+        canvasImg.id = id;
+        canvasImg.className = "bgDisplayImg";
+        canvasImg.crossOrigin = "anonymous";
 
-      canvasImg.addEventListener("click", () => {
-        console.log(canvasImg.src);
-        let previewImg = new Image();
-        previewImg.src = canvasImg.src;
-        previewImg.crossOrigin = "anonymous";
-        bgImgPreview.appendChild(previewImg);
-        bgDisplayEl.style.display = "none";
-        blogTitleEl.style.display = "flex";
-        previewImg.onload = function () {
-          ctx.drawImage(previewImg, 0, 0, canvas.width, canvas.height);
-        };
-      });
-      return canvasImg;
-    }
+        canvasImg.addEventListener("click", () => {
+          let previewImg = new Image();
+          previewImg.src = canvasImg.src;
+          previewImg.crossOrigin = "anonymous";
+          bgImgPreview.appendChild(previewImg);
+          bgDisplayEl.style.display = "none";
+          blogTitleEl.style.display = "flex";
+          previewImg.onload = function () {
+            ctx.drawImage(previewImg, 0, 0, canvas.width, canvas.height);
+          };
+        });
+        return canvasImg;
+      }
 
-    if (bgInput.value === "") {
       bgTheme = bgSelector.value;
       if (bgTheme === "motivational") {
         motivational.forEach((imgURL, index) => {
@@ -124,13 +123,21 @@ bgNextBtn.addEventListener("click", () => {
           bgDisplayImgs.appendChild(createImageNode(imgURL, index));
         });
       }
+      bgDisplayEl.style.display = "flex";
     } else {
       let bgColor = bgInput.value;
       ctx.fillStyle = `${bgColor}`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      blogTitleEl.style.display = "flex";
+
+      let previewDiv = document.createElement("div");
+      previewDiv.style.width = "300px";
+      previewDiv.style.height = "250px";
+      previewDiv.style.background = `${bgColor}`;
+
+      bgImgPreview.appendChild(previewDiv);
     }
     bgEl.style.display = "none";
-    bgDisplayEl.style.display = "flex";
     fillAllFields.style.display = "none";
   } else {
     fillAllFields.style.display = "block";
@@ -230,7 +237,7 @@ titleNext.addEventListener("click", () => {
     blogTitleEl.style.display = "none";
     canvasDiv.style.display = "flex";
     fillAllFields.style.display = "none";
-  }else{
+  } else {
     fillAllFields.style.display = "block";
   }
 });
@@ -244,7 +251,11 @@ bgDisplayBackBtn.addEventListener("click", () => {
 });
 
 titleBack.addEventListener("click", () => {
-  bgDisplayEl.style.display = "flex";
+  if (bgSelector.value !== "") {
+    bgDisplayEl.style.display = "flex";
+  } else {
+    bgEl.style.display = "flex";
+  }
   blogTitleEl.style.display = "none";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   while (bgImgPreview.firstChild) {
